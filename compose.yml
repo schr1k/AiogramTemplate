@@ -1,0 +1,46 @@
+services:
+  template_redis:
+    container_name: lego_redis
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:6789:6379"
+    restart: unless-stopped
+    volumes:
+      - template_redis:/var/lib/redis/data
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli PING | grep PONG" ]
+      interval: 60s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1000M
+
+  template_bot:
+    depends_on:
+      lego_redis:
+        condition: service_healthy
+    container_name: lego_bot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./src
+          target: ./src
+        - action: rebuild
+          path: .
+          target: .
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2000M
+
+volumes:
+  template_redis:

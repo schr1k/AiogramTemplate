@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy via docker
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy with docker compose
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USERNAME}}
+          password: ${{secrets.SSH_PASSWORD}}
+          script: |
+            cd ${{ secrets.SSH_PATH }}
+            git checkout main
+            git pull
+            docker compose up --build -d

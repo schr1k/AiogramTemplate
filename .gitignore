@@ -1,0 +1,13 @@
+# Python
+.venv
+__pycache__
+.ruff_cache
+
+# IDEs
+.idea
+.vscode
+
+# Other
+.env
+src/auth/certs/**
+!src/auth/certs/.gitkeep
