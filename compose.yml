@@ -21,7 +21,7 @@ services:
 
   template_bot:
     depends_on:
-      lego_redis:
+      template_redis:
         condition: service_healthy
     container_name: lego_bot
     build:
