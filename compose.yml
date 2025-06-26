@@ -1,6 +1,6 @@
 services:
   template_redis:
-    container_name: lego_redis
+    container_name: template_redis
     image: redis:7-alpine
     ports:
       - "127.0.0.1:6789:6379"
@@ -23,7 +23,7 @@ services:
     depends_on:
       template_redis:
         condition: service_healthy
-    container_name: lego_bot
+    container_name: template_bot
     build:
       context: .
       dockerfile: Dockerfile

@@ -4,8 +4,9 @@ WORKDIR /app
 
 COPY pyproject.toml uv.lock ./
 
-RUN uv sync --frozen --no-install-project --no-dev --no-editable
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen --no-install-project --no-dev --no-editable
 
 COPY . .
 
-CMD [ "uv", "run", "main.py" ]
+CMD [ "uv", "run", "--no-dev", "main.py" ]

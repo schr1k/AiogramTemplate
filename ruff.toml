@@ -11,7 +11,7 @@ target-version = "py313"
 
 [lint]
 select = ["ALL"]
-ignore = ["D", "INP001"]
+ignore = ["D", "INP001", "RET504"]
 
 [lint.flake8-quotes]
 docstring-quotes = "double"
