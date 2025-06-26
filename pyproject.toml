@@ -1,19 +1,19 @@
 [project]
-name = "fastapi_template"
+name = "aiogram_template"
 version = "1.0.0"
-description = "FastAPI template"
+description = "Aiogram template"
 readme = "README.md"
 license = "CC-BY-NC-ND-4.0"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.13"
 dependencies = [
     "aiogram>=3.20.0",
-    "pydantic-settings>=2.9.1",
-    "redis>=5.2.1",
+    "pydantic-settings>=2.10.1",
+    "redis>=6.2.0",
 ]
 
 [dependency-groups]
 dev = [
     "pre-commit>=4.2.0",
-    "ruff>=0.11.6",
+    "ruff>=0.12.0",
 ]

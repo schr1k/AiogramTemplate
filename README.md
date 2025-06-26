@@ -30,6 +30,12 @@
     ```
 
 ### Pure python
-```bash
-uv run main.py
-```
+* Development mode
+    ```bash
+    uv run main.py
+    ```
+
+* Production mode
+    ```bash
+    uv run --no-dev main.py
+    ```
