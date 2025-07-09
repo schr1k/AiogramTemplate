@@ -9,8 +9,10 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = false
 
-[*.{py,toml,lock}]
+[{*.{py,toml,lock,md},Dockerfile}]
 indent_size = 4
+
+[*.py]
 insert_final_newline = true
 
 [*.md]
